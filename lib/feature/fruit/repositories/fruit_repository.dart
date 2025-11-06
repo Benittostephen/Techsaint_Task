@@ -63,9 +63,11 @@ class FruitRepository {
         return jsonList.map((json) => Fruit.fromJson(json)).toList();
       }
     } catch (e) {
-      // If parsing fails, return empty list
+      // If parsing fails, rethrow
+      throw Exception('Failed to load fruit data');
     }
-    return [];
+
+    throw Exception('Failed to load fruit data');
   }
 
   // Get cached fruit by name
